@@ -3,6 +3,8 @@ import Header from "./components/Header/Header";
 import SideMenu from "./components/SideMenu/SideMenu";
 import Footer from "./components/Footer/Footer";
 import Home from "./pages/Home/Home";
+import Contact from "./pages/Contact/Contact";
+import Category from "./pages/Category/Category";
 
 function App() {
   return (
@@ -10,7 +12,9 @@ function App() {
       <Header />
       <SideMenu />
       <Switch>
-        <Route component={Home} />
+        <Route path="/" component={Home} />
+        <Route path="/category/:categoryName/:subCategoryName?" component={Category} />
+        <Route path="/contact" component={Contact} />
       </Switch>
       <Footer />
     </BrowserRouter>

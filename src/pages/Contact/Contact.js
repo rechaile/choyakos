@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function Navs() {
+export default function Contact() {
 	return (
 		<div>
-			<h1>navs</h1>
+			<h1>contacto</h1>
 		</div>
 	)
 }
