@@ -25,7 +25,9 @@ export default function Category() {
     const res = await fetch();
     const data = await res.json();
 
-    return data;
+    const categoryData = await data.filter((element) => element.category === categoryName)
+
+    return categoryData;
   };
 
   const fetchSubcategory = async () => {
