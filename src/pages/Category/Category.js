@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import arrs from "../../data";
+
+const { datad } = arrs;
 
 export default function Category() {
   const [category, setCategory] = useState([]);
@@ -15,17 +18,19 @@ export default function Category() {
       if (subCategoryName) {
         const subCategoryFromApi = await fetchSubcategory();
         setSubCategory(subCategoryFromApi);
-	  }
+      }
     };
 
     getCategory();
   }, [categoryName, subCategoryName]);
 
   const fetchCategory = async () => {
-    const res = await fetch();
-    const data = await res.json();
+    /* const res = await fetch();
+    const data = await res.json(); */
 
-    const categoryData = await data.filter((element) => element.category === categoryName)
+    const categoryData = await datad.filter(
+      (element) => element.category === categoryName
+    );
 
     return categoryData;
   };
@@ -38,9 +43,25 @@ export default function Category() {
     return filterSubCategory;
   };
 
+  console.log(category);
+
   return (
-  <div>
-	  <h1>categorías</h1>
-  </div>
+    <>
+      {category.map((element) => (
+        <div>
+          <img className="img-prod" src={element.img} alt="" />
+          <a target="_blank" rel="noreferrer" href={element.url}>
+            <h5>{element.title}</h5>
+          </a>
+          <p>{element.description}</p>
+          <p>
+            {element.price} <span>{element.savings}</span>
+          </p>
+          <a target="_blank" rel="noreferrer" href={element.url}>
+            <button>Ir a choyakos</button>
+          </a>
+        </div>
+      ))}
+    </>
   );
 }

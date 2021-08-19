@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route path="/" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route path="/category/:categoryName/:subCategoryName?" component={Category} />
         <Route path="/contact" component={Contact} />
       </Switch>
